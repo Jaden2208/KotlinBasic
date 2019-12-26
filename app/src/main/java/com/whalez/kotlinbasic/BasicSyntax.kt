@@ -26,7 +26,7 @@ fun main() {
      String templates
      */
     var d = 1
-    val s1 = "d is %d"
+    val s1 = "d is $d"
     println(s1)
 }
 
@@ -43,3 +43,59 @@ fun printSum(a: Int, b: Int): Unit { // Unit: java에서 void 타입을 의미, 
     println("sum of $a and $b is ${a + b}")
 }
 
+/*
+ Conditional expressions
+ */
+fun maxOf(a: Int, b: Int): Int {
+    if (a > b) return a
+    else return b
+}
+
+fun simpleMaxOf(a: Int, b: Int) = if (a > b) a else b
+
+/*
+ Nullable values and null checks
+  : A reference must be explicitly marked as nullable when null value
+    is possible.
+ */
+fun parseInt(str: String): Int? {
+    return null
+}
+
+/*
+ Type checks and automatic casts
+ */
+fun getStringLength(obj: Any): Int? {
+    if (obj is String) {
+        return obj.length
+    }
+    else if(obj !is Int) {
+        return null
+    }
+    return null
+}
+
+/*
+ for loop
+ */
+fun forLoop1(){
+    val items = listOf("apple", "banana", "kiwifruit")
+    for (item in items) {
+        println(item)
+    }
+}
+
+fun forLoop2(){
+    val items = listOf("apple", "banana", "kiwifruit")
+    for (index in items.indices) {
+        println("item at $index is ${items[index]}")
+    }
+}
+
+/*
+ while loop
+ */
+fun whileLoop(){
+    val items = listOf("apple", "banana", "kiwifruit")
+    var index = 0
+}
