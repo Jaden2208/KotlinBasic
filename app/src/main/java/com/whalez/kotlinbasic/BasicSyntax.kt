@@ -1,33 +1,37 @@
 package com.whalez.kotlinbasic
 
 fun main() {
-    println("Hello world!")
+//    println("Hello world!")
+//
+//    println(sum(2, 3))
+//
+//    println(simpleSum(2, 3))
+//
+//    printSum(2, 3)
+//
+//    /*
+//     Variables
+//    */
+//    // val : assigned a value only once.
+//    val a: Int = 1 // immediate assignment
+//    val b = 2 // 'Int' type is inferred
+//    val c: Int // Type required when no initializer is provided
+//    c = 3 //  deferred assignment
+//
+//    // var : can be reassigned
+//    var x = 5 // 'Int' type is inferred
+//    x += 1
+//
+//    /*
+//     String templates
+//     */
+//    var d = 1
+//    val s1 = "d is $d"
+//    println(s1)
+//    print("1 is " + describe(1))
 
-    println(sum(2, 3))
+    collections()
 
-    println(simpleSum(2, 3))
-
-    printSum(2, 3)
-
-    /*
-     Variables
-    */
-    // val : assigned a value only once.
-    val a: Int = 1 // immediate assignment
-    val b = 2 // 'Int' type is inferred
-    val c: Int // Type required when no initializer is provided
-    c = 3 //  deferred assignment
-
-    // var : can be reassigned
-    var x = 5 // 'Int' type is inferred
-    x += 1
-
-    /*
-     String templates
-     */
-    var d = 1
-    val s1 = "d is $d"
-    println(s1)
 }
 
 /*
@@ -99,3 +103,92 @@ fun whileLoop(){
     val items = listOf("apple", "banana", "kiwifruit")
     var index = 0
 }
+
+/*
+ when expression
+ */
+fun describe(obj: Any): String =
+    when (obj) {
+        1           -> "One"
+        "Hello"     -> "Greeting"
+        is Long     -> "Long"
+        !is String  -> "Not a string"
+        else        -> "Unknown"
+    }
+
+/*
+ Ranges
+ */
+fun ranges(){
+
+    // Check if a number is within a range using in operator
+    val x = 10
+    val y = 9
+    if (x in 1..y+1){ // x가 1 에서 y+1 사이의 수인 경우,
+        println("fits in range")
+    }
+
+    // Check if a number is out of range
+    val list = listOf("a", "b", "c")
+    if(-1 !in 0..list.lastIndex){
+        println("-1 is out of range")
+    }
+    if(list.size !in list.indices){
+        println("list size is out of valid list indices range, too")
+    }
+
+    // Iterating over a range
+    for(x in 1..5){
+        print(x)
+    }
+
+    // Iterating over a range, having step
+    for(x in 1..10 step 2){
+        print(x)
+    }
+    println()
+    for(x in 9 downTo 0 step 3){
+        print(x)
+    }
+
+}
+
+/*
+ Collections
+ */
+fun collections(){
+    // Iterating over a collection
+    val items = listOf("A", "B", "C")
+    for (item in items){
+        println(item)
+    }
+
+    // Checking if a collection contains an object using in operator
+    when{
+        "A" in items -> println("aye")
+        "B" in items -> println("bee")
+    }
+
+    // Using lambda expressions to filter and map collections
+    val fruits = listOf("banana", "abocado", "apple", "kiwifruit")
+    fruits
+        .filter { it.startsWith("a") }
+        .sortedBy { it }
+        .map { it.toUpperCase() }
+        .forEach { println(it) }
+}
+
+/*
+ Creating basic classes and their instances
+ */
+fun createClass(){
+    val rectangle = Rectangle(5.0, 2.0)
+    val triangle = Triangle(3.0, 4.0, 5.0)
+}
+
+class Rectangle(d: Double, d1: Double) {}
+class Triangle(d: Double, d1: Double, d2: Double) {}
+
+
+
+
